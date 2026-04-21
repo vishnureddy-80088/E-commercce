@@ -7,6 +7,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <style>
 :root{
 --bg:#020617;
@@ -150,8 +152,8 @@ color:var(--muted);
 <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb">
 <div class="card-body">
 <h4>iPhone 14 Pro</h4>
-<div class="price">$1099</div>
-<button class="btn">Add to Cart</button>
+<div class="price">₹1,09,999</div>
+<button class="btn" onclick="payNow(109999)">⚡ Buy Now</button>
 </div>
 </div>
 
@@ -159,8 +161,8 @@ color:var(--muted);
 <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
 <div class="card-body">
 <h4>MacBook Air M2</h4>
-<div class="price">$999</div>
-<button class="btn">Add to Cart</button>
+<div class="price">₹99,999</div>
+<button class="btn" onclick="payNow(99999)">⚡ Buy Now</button>
 </div>
 </div>
 
@@ -168,17 +170,17 @@ color:var(--muted);
 <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad">
 <div class="card-body">
 <h4>Apple Watch</h4>
-<div class="price">$399</div>
-<button class="btn">Add to Cart</button>
+<div class="price">₹39,999</div>
+<button class="btn" onclick="payNow(39999)">⚡ Buy Now</button>
 </div>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519">
 <div class="card-body">
-<h4>Sony WH-1000XM5</h4>
-<div class="price">$349</div>
-<button class="btn">Add to Cart</button>
+<h4>Sony Headphones</h4>
+<div class="price">₹29,999</div>
+<button class="btn" onclick="payNow(29999)">⚡ Buy Now</button>
 </div>
 </div>
 
@@ -186,8 +188,8 @@ color:var(--muted);
 <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45">
 <div class="card-body">
 <h4>Gaming Laptop</h4>
-<div class="price">$1899</div>
-<button class="btn">Add to Cart</button>
+<div class="price">₹1,89,999</div>
+<button class="btn" onclick="payNow(189999)">⚡ Buy Now</button>
 </div>
 </div>
 
@@ -195,18 +197,47 @@ color:var(--muted);
 <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f">
 <div class="card-body">
 <h4>DSLR Camera</h4>
-<div class="price">$2499</div>
-<button class="btn">Add to Cart</button>
+<div class="price">₹2,49,999</div>
+<button class="btn" onclick="payNow(249999)">⚡ Buy Now</button>
 </div>
 </div>
 
 </div>
-
 </div>
 
 <footer>
 © 2026 NexusShop — Premium Electronics Store
 </footer>
+
+<script>
+function payNow(amount){
+
+    var options = {
+        "key": "YOUR_RAZORPAY_KEY", // 🔴 PUT YOUR KEY HERE
+        "amount": amount * 100,
+        "currency": "INR",
+        "name": "NexusShop",
+        "description": "Electronics Purchase",
+
+        "handler": function (response){
+            alert("✅ Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+        },
+
+        "prefill": {
+            "name": "Customer",
+            "email": "test@example.com",
+            "contact": "9999999999"
+        },
+
+        "theme": {
+            "color": "#6366f1"
+        }
+    };
+
+    var rzp = new Razorpay(options);
+    rzp.open();
+}
+</script>
 
 </body>
 </html>
